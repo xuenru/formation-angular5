@@ -3,8 +3,11 @@ import { NgModule } from '@angular/core';
 
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
+import { HomeModule } from './home/home.module';
+import { Page404Module } from './page404/page404.module';
 
 import { AppComponent } from './app.component';
+
 
 
 @NgModule({
@@ -14,7 +17,9 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     CoreModule,
-    SharedModule
+    SharedModule,
+    HomeModule,
+    Page404Module
   ],
   providers: [],
   bootstrap: [AppComponent]
