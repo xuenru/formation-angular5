@@ -9,6 +9,7 @@ import { HomeModule } from './home/home.module';
 import { Page404Module } from './page404/page404.module';
 
 import { AppComponent } from './app.component';
+import { ItemsModule } from './items/items.module';
 
 
 
@@ -22,7 +23,8 @@ import { AppComponent } from './app.component';
     SharedModule,
     HomeModule,
     Page404Module,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    ItemsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

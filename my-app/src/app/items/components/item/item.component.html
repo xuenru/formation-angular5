@@ -1,0 +1,13 @@
+<div class="card">
+  <div class="card-header">
+    <!-- <span *ngIf="item.state === state.ALIVRER" class="state-alivrer">{{ item.state }}</span>
+    <span *ngIf="item.state === state.ENCOURS" class="state-encours">{{ item.state }}</span>
+    <span *ngIf="item.state === state.LIVREE" class="state-livree">{{ item.state }}</span> -->
+    <span [appState]="item.state">{{ item.state }}</span>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{ item.name }}</h5>
+    <p class="card-text">{{ item.reference }}</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
