@@ -10,6 +10,7 @@ import { Page404Module } from './page404/page404.module';
 
 import { AppComponent } from './app.component';
 import { ItemsModule } from './items/items.module';
+import { AppRoutingModule } from './app-routing.module';
 
 
 
@@ -22,9 +23,10 @@ import { ItemsModule } from './items/items.module';
     CoreModule,
     SharedModule,
     HomeModule,
-    Page404Module,
     NgbModule.forRoot(),
-    ItemsModule
+    ItemsModule,
+    AppRoutingModule,
+    Page404Module
   ],
   providers: [],
   bootstrap: [AppComponent]
