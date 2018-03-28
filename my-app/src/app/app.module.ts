@@ -10,6 +10,7 @@ import { Page404Module } from './page404/page404.module';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { CollectionService } from './core/services/collection/collection.service';
 
 
 
@@ -26,7 +27,7 @@ import { AppRoutingModule } from './app-routing.module';
     AppRoutingModule,
     Page404Module
   ],
-  providers: [],
+  providers: [CollectionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,15 +1,16 @@
-import { Directive, Input, OnInit, HostBinding } from '@angular/core';
+import { Directive, Input, OnInit, HostBinding, OnChanges } from '@angular/core';
 
 @Directive({
   selector: '[appState]'
 })
-export class StateDirective implements OnInit {
+export class StateDirective implements  OnChanges {
   @Input() appState: string;
   // Binder la propriété class du span avec cette chaine
   @HostBinding('class') nomClass;
   constructor() {
    }
-   ngOnInit(): void {
+
+   ngOnChanges(): void {
     this.nomClass = this.formatClass(this.appState);
    }
 

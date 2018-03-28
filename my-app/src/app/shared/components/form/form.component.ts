@@ -1,6 +1,7 @@
 import { Component, OnInit, OnChanges, Output, EventEmitter } from '@angular/core';
 import { State } from '../../enums/state.enum';
 import { Item } from '../../models/item.model';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-form',
@@ -9,24 +10,38 @@ import { Item } from '../../models/item.model';
 })
 export class FormComponent implements OnInit, OnChanges {
   libelles = Object.values(State);
-  newItem: Item;
   @Output() nItem: EventEmitter<Item> = new EventEmitter;
-  constructor() { }
+  form: FormGroup;
+  constructor(private fb: FormBuilder) {
+
+   }
+
+   createForm() {
+    this.form = this.fb.group({
+      name: [
+        '',
+      Validators.compose([Validators.required, Validators.minLength(5)])
+    ],
+      reference: [
+        '',
+        Validators.compose([Validators.required, Validators.minLength(3)])
+      ],
+      state: State.ALIVRER
+    });
+   }
 
   ngOnInit() {
-    this.newItem = {
-      id: '',
-      name: '',
-      reference: '',
-      state: State.ALIVRER
-    };
+    this.createForm();
   }
 
   ngOnChanges() {
-    console.log(this.newItem.name);
   }
+
   process(): void {
-    // console.log(this.newItem);
-    this.nItem.emit(this.newItem);
+    this.nItem.emit(this.form.value);
+  }
+
+  invalidCondition(filedName: string): Boolean {
+    return this.form.get(filedName).invalid && this.form.get(filedName).touched;
   }
 }
