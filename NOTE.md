@@ -5,3 +5,9 @@ https://angular.cn/guide/lifecycle-hooks
 
 https://ng-bootstrap.github.io/#/home
 https://www.npmjs.com/package/yarn
+
+yarn add ..
+
+
+https://github.com/angular/angularfire2
+https://angularfirebase.com/

@@ -12,6 +12,10 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CollectionService } from './core/services/collection/collection.service';
 
+import { AngularFireModule } from 'angularfire2';
+import { environment } from '../environments/environment.prod';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+
 
 
 @NgModule({
@@ -25,7 +29,9 @@ import { CollectionService } from './core/services/collection/collection.service
     HomeModule,
     NgbModule.forRoot(),
     AppRoutingModule,
-    Page404Module
+    Page404Module,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule
   ],
   providers: [CollectionService],
   bootstrap: [AppComponent]
