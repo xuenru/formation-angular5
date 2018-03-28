@@ -11,3 +11,11 @@ yarn add ..
 
 https://github.com/angular/angularfire2
 https://angularfirebase.com/
+
+AsyncPipe
+
+preloadingStrategy: PreloadAllModules
+changeDetection: ChangeDetectionStrategy.OnPush
+
+
+https://alligator.io/angular/route-resolvers/

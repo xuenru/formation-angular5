@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, OnChanges, Output, EventEmitter, Input } from '@angular/core';
 import { State } from '../../enums/state.enum';
 import { Item } from '../../models/item.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -11,6 +11,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class FormComponent implements OnInit, OnChanges {
   libelles = Object.values(State);
   @Output() nItem: EventEmitter<Item> = new EventEmitter;
+  @Input() item: Item;
   form: FormGroup;
   constructor(private fb: FormBuilder) {
 
@@ -19,14 +20,16 @@ export class FormComponent implements OnInit, OnChanges {
    createForm() {
     this.form = this.fb.group({
       name: [
-        '',
-      Validators.compose([Validators.required, Validators.minLength(5)])
+        this.item ? this.item.name : '',
+        Validators.compose([Validators.required, Validators.minLength(2)])
     ],
       reference: [
-        '',
-        Validators.compose([Validators.required, Validators.minLength(3)])
+        this.item ? this.item.reference : '',
+        Validators.compose
+        ([Validators.required, Validators.minLength(3)]
+      )
       ],
-      state: State.ALIVRER
+      state: this.item ? this.item.state : State.ALIVRER,
     });
    }
 
@@ -37,8 +40,20 @@ export class FormComponent implements OnInit, OnChanges {
   ngOnChanges() {
   }
 
+  getItem() {
+    const data = this.form.value;
+    if (!this.item) {
+      return data;
+    }
+    const id = this.item.id;
+    return {id, ...data};
+  }
+
   process(): void {
-    this.nItem.emit(this.form.value);
+    const data = this.getItem();
+    this.nItem.emit(data);
+    this.form.reset();
+    this.form.get('state').setValue(State.ALIVRER);
   }
 
   invalidCondition(filedName: string): Boolean {

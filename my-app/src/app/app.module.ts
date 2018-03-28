@@ -15,6 +15,7 @@ import { CollectionService } from './core/services/collection/collection.service
 import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment.prod';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { EditResolverService } from './core/services/edit-resolver/edit-resolver.service';
 
 
 
@@ -33,7 +34,12 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule
   ],
-  providers: [CollectionService],
-  bootstrap: [AppComponent]
+  providers: [
+    CollectionService,
+    EditResolverService
+  ],
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule { }

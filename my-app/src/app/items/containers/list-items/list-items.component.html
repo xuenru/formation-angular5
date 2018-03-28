@@ -1,5 +1,5 @@
 <div class="container">
-  <ng-container *ngFor="let xitem of collection">
+  <ng-container *ngFor="let xitem of collection$ | async">
     <!-- bind with '[]' -->
     <app-item [item]='xitem'></app-item>
   </ng-container>

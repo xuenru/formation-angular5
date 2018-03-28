@@ -16,5 +16,6 @@
      (click)="changeState(state.LIVREE)">
       {{ state.LIVREE }}
     </button>
+    <button class="btn btn-secondary" [routerLink]="['/items/edit/', item.id]">Edit</button>
   </div>
 </div>
